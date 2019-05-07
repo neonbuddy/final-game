@@ -1,0 +1,456 @@
+fileFormatVersion: 2
+guid: b9a6e49116f50e043ba18e090fa40489
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Down walk_0
+    21300002: Down walk_1
+    21300004: Down walk_2
+    21300006: Down walk_3
+    21300008: Down walk_4
+    21300010: Down walk_5
+    21300012: Down walk_6
+    21300014: Down walk_7
+    21300016: Down walk_8
+    21300018: Down walk_9
+    21300020: Down walk_10
+    21300022: Down walk_11
+    21300024: Down walk_12
+    21300026: Down walk_13
+    21300028: Down walk_14
+    21300030: Down walk_15
+    21300032: Down walk_16
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Down walk_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 3607
+        width: 433
+        height: 462
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5265b5d27167054790916b05860e176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_1
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 3607
+        width: 433
+        height: 466
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3b2be892b831964b92b0719a5d8cbe0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_2
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 3608
+        width: 428
+        height: 472
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d21d9e0a736b6428b64aed11b2d953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_3
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 3609
+        width: 432
+        height: 474
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c5bb6ce017acfa4b8c9f6bd0d07bdd3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_4
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 3123
+        width: 428
+        height: 480
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0306e16c6c255d243b696084780d9bc9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_5
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 3123
+        width: 433
+        height: 477
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c33f315520da544ad3762bdd734aa5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_6
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 3120
+        width: 428
+        height: 473
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1f55f04260c0be4c9e022bc06f67291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_7
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 3120
+        width: 431
+        height: 467
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02186f080e3fa4946bd8861aabd3e3d3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 2632
+        width: 433
+        height: 465
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4257f1d8fa0266147b7815723d70b138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_9
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 2635
+        width: 433
+        height: 466
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd618010b20784c4eba2387153181a98
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_10
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 2635
+        width: 428
+        height: 472
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d91d69115070d438ff2f5b8aed5fb0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_11
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 2637
+        width: 432
+        height: 474
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76410e00e3d41e14795dbc0af9938fb9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_12
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 2151
+        width: 428
+        height: 481
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e430ac0f853c1340a54ef524b8f993c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_13
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 2151
+        width: 433
+        height: 474
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d77807d1442804f8510139d5372caf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_14
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 2151
+        width: 428
+        height: 470
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1068d69b5e1ee0b4e9fbc10bc3946ff7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_15
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 2149
+        width: 433
+        height: 468
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807f277ba20eb5847ad7f4ab2eb541a7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down walk_16
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1663
+        width: 433
+        height: 462
+      alignment: 9
+      pivot: {x: 0.519, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4cba9e2eeb63e489cc31fc098a81d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 78bf9da4958c59e45a3f58919d71105b
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
