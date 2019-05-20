@@ -17,6 +17,8 @@ public class SpellScript : MonoBehaviour
     /// </summary>
     public Transform MyTarget { get; private set; }
 
+    private Transform source;   //Where the spell comes from
+
     private int damage;
     
     // Start is called before the first frame update
@@ -28,10 +30,11 @@ public class SpellScript : MonoBehaviour
         //target = GameObject.Find("Target").transform;      //For Testing by hardcoding object name as "Target"
     }
 
-    public void Initialize(Transform target, int damage)
+    public void Initialize(Transform target, int damage, Transform source)
     {
         this.MyTarget = target;     //Target put into initialize is MyTarget
-        this.damage = damage;
+        this.damage = damage;       //Initializes damage
+        this.source = source;       //Initializes source
     }
 
 
@@ -68,8 +71,9 @@ public class SpellScript : MonoBehaviour
     {
         if (collision.tag == "HitBox" && collision.transform == MyTarget)       //Makes sure spell hits collision box of selected target. This prevents it from accidently hitting enemy in front of target
         {
+            Character c = collision.GetComponentInParent<Character>();
             speed = 0;                                                          //Used to prevent glitches with spell moving after enemy dies
-            collision.GetComponentInParent<Enemy>().TakeDamage(damage);         //This refers to the "Enemy" which the hitbox is a child of
+            c.TakeDamage(damage, source);
             GetComponent<Animator>().SetTrigger("impact");
             myRigidBody.velocity = Vector2.zero;
             MyTarget = null;                                //Removes target after collision

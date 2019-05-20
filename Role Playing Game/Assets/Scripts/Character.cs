@@ -17,14 +17,14 @@ public abstract class Character : MonoBehaviour
     private float speed;
 
     /// <summary>
-    /// Refrence Characters animator
+    /// Refrence Characters animator; Property that allows AttackState to access
     /// </summary>
-    protected Animator myAnimator;
+    public Animator MyAnimator { get; set; }
 
     /// <summary>
-    /// Indicates if character is attacking
+    /// Indicates if character is attacking; Property that allows AttackState to access
     /// </summary>
-    protected bool isAttacking = false;
+    public bool IsAttacking { get; set; }
 
     /// <summary>
     /// Reference to attack coroutine
@@ -43,6 +43,8 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     protected Stat health;
 
+    public Transform MyTarget { get; set; }
+
     //Gets character health so it can be used in frame and elsewhere
     public Stat MyHealth
     {
@@ -58,7 +60,7 @@ public abstract class Character : MonoBehaviour
     /// <summary>
     /// Character's Direction
     /// </summary>
-    protected Vector2 direction;
+    private Vector2 direction;
 
     /// <summary>
     /// References character's rigidbody
@@ -72,7 +74,23 @@ public abstract class Character : MonoBehaviour
     {
         get
             {
-            return direction.x != 0 || direction.y != 0;
+            return Direction.x != 0 || Direction.y != 0;
+        }
+    }
+
+    public Vector2 Direction { get => direction; set => direction = value; }    //Property that allows access to private field, can be accessed by Enemy States
+
+    public float Speed { get => speed; set => speed = value; }                  //Property that allows access to private speed field, can be accessed by Enemy States
+
+
+    /// <summary>
+    /// Property used to determine if character alive or dead
+    /// </summary>
+    public bool IsAlive
+    {
+        get
+        {
+            return health.MyCurrentValue > 0;       //Returns true
         }
     }
 
@@ -86,11 +104,11 @@ public abstract class Character : MonoBehaviour
 
         myRigidbody = GetComponent<Rigidbody2D>();         //Refrences characters rigid body
 
-        myAnimator = GetComponent<Animator>();             //Refrences characters Animator controller
+        MyAnimator = GetComponent<Animator>();             //Refrences characters Animator controller
     }
 
     /// <summary>
-    /// Virtual Update() allows it to be overritten in player class
+    /// Virtual Update() allows it to be overritten in player and enemy classes
     /// </summary>
     protected virtual void Update()              //Allows override of player update function (Called once per frame)
     {
@@ -108,7 +126,12 @@ public abstract class Character : MonoBehaviour
     /// </summary>
     public void Move()
     {
-        myRigidbody.velocity = direction.normalized * speed;
+        if (IsAlive)
+        {
+            myRigidbody.velocity = Direction.normalized * Speed;        //Moves character
+        }
+
+        
 
     }
 
@@ -118,39 +141,29 @@ public abstract class Character : MonoBehaviour
     /// </summary>
     public void HandleLayers()
     {
-        if (IsMoving)
+        if (IsAlive)
         {
-            ActivateLayer("WalkLayer");
+            if (IsMoving)   //Check for character: if moving, idling, attacking, or dying
+            {
+                ActivateLayer("WalkLayer");
 
-            //Sets animation paramater so Character faces right direction
-            myAnimator.SetFloat("x", direction.x);
-            myAnimator.SetFloat("y", direction.y);
-
-            StopAttack();                                   //Character cant move while attacking
-        }
-        else if (isAttacking)
-        {
-            ActivateLayer("AttackLayer");
+                //Sets animation paramater so Character faces right direction
+                MyAnimator.SetFloat("x", Direction.x);
+                MyAnimator.SetFloat("y", Direction.y);
+            }
+            else if (IsAttacking)
+            {
+                ActivateLayer("AttackLayer");       //Player will attack with no input; Enemy will
+            }
+            else
+            {
+                ActivateLayer("IdleLayer");         //Player will idle with no input; Enemy will idle with no Player in AggroRange
+            }
         }
         else
         {
-            ActivateLayer("IdleLayer");         //Character will idle if no input
+            ActivateLayer("DeathLayer");            //Player and Enemy will die if health stat goes below 0 (TakeDamage function)
         }
-
-        //TODO *Need death animation!*
-
-
-    }
-
-
-    /// <summary>
-    /// Uses Character direction to change animation
-    /// </summary>
-    /// <param name="direction"></param>
-    public void AnimateMovement(Vector2 direction)     
-    {
-
-
     }
 
     /// <summary>
@@ -159,41 +172,30 @@ public abstract class Character : MonoBehaviour
     /// <param name="layerName"></param>
     public void ActivateLayer(string layerName)         
     {
-        for (int i = 0; i < myAnimator.layerCount; i++)         //Disables all other layers
+        for (int i = 0; i < MyAnimator.layerCount; i++)         //Disables all other layers
         {
-            myAnimator.SetLayerWeight(i, 0);
+            MyAnimator.SetLayerWeight(i, 0);
         }
 
-        myAnimator.SetLayerWeight(myAnimator.GetLayerIndex(layerName), 1);     //Uses layer name to get index and enables it, activating propper animation
-    }
-
-    /// <summary>
-    /// Stops character attack
-    /// </summary>
-    public virtual void StopAttack()
-    {
-
-        isAttacking = false;
-        myAnimator.SetBool("attack", isAttacking);  //Stops attack animation
-
-        if (attackRoutine != null)
-        {
-            StopCoroutine(attackRoutine);
-            //Debug.Log("attack stopped");
-        }
+        MyAnimator.SetLayerWeight(MyAnimator.GetLayerIndex(layerName), 1);     //Uses layer name to get index and enables it, activating propper animation
     }
 
     /// <summary>
     /// Function makes character take damage
     /// </summary>
     /// <param name="damage"></param>
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, Transform source)
     {
         health.MyCurrentValue -= damage;
 
-        if(health.MyCurrentValue <= 0)
+        if(health.MyCurrentValue <= 0)              //If character health falls below 0
         {
-            myAnimator.SetTrigger("die");           //Links to "die" paramater under Animator for enemy and Player
+
+            Direction = Vector2.zero;
+            myRigidbody.velocity = Direction;       //Makes it so character cannot continue moving when dead
+
+            MyAnimator.SetTrigger("die");           //Trigger Death Animation
+                                                    //(Links to "die" paramater under Animator for Enemy and Player)
         }
 
     }

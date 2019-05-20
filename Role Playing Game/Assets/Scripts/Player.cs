@@ -40,15 +40,8 @@ public class Player : Character
 
     private SpellBook spellBook;    //references SpellBook script
 
+    //Variables for min and max players postion on map
     private Vector3 min, max;
-
-
- 
-    /// <summary>
-    /// Player's target
-    /// </summary>
-    public Transform MyTarget { get; set; }
-
 
     /// <summary>
     /// 
@@ -70,8 +63,8 @@ public class Player : Character
        
         GetInput();                         //GetInput Func (keyboard)
 
-        //transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x),         //Work in progess for camera
-        //    Mathf.Clamp(transform.position.y, min.y, max.y), transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x),         //Keeps player in bounds
+        Mathf.Clamp(transform.position.y, min.y, max.y), transform.position.z);
 
         base.Update();                      //Executes Character update
 
@@ -91,7 +84,7 @@ public class Player : Character
     //Gets player input from keyboard  *TO DO ADD Customizable setting?* Possible player movement with mouse clicks
     private void GetInput()
     {
-        direction = Vector2.zero;       //Makes player maintain same movement speed *Resets to 0 after each loop*
+        Direction = Vector2.zero;       //Makes player maintain same movement speed *Resets to 0 after each loop*
 
         ////***DEBUGGING ONLY***            Testing health and mana gain/loss
         //if (Input.GetKeyDown(KeyCode.I))
@@ -113,23 +106,28 @@ public class Player : Character
         if (Input.GetKey(KeyCode.W))
         {
             exitIndex = 0;
-            direction += Vector2.up;
+            Direction += Vector2.up;        //Direction is what changes the players animation in character script
         }
         if (Input.GetKey(KeyCode.D))
         {
             exitIndex = 1;
-            direction += Vector2.right;
+            Direction += Vector2.right;
         }
         if (Input.GetKey(KeyCode.S))
         {
             exitIndex = 2;
-            direction += Vector2.down;
+            Direction += Vector2.down;
         }
         if (Input.GetKey(KeyCode.A))
         {
             exitIndex = 3;
-            direction += Vector2.left;
+            Direction += Vector2.left;
         }
+        if(IsMoving)
+        {
+            StopAttack();
+        }
+
     }
 
     /// <summary>
@@ -150,9 +148,9 @@ public class Player : Character
 
         Spell newSpell = spellBook.CastSpell(spellIndex);          //Spellbook casts a spell based on the index returned. Processed through spell array
 
-        isAttacking = true;                                     //Indicates player is attacking
+        IsAttacking = true;                                     //Indicates player is attacking
 
-        myAnimator.SetBool("attack", isAttacking);              //Starts attack animation
+        MyAnimator.SetBool("attack", IsAttacking);              //Starts attack animation
 
         yield return new WaitForSeconds(newSpell.MyCastTime);     //Hardcoded example of cast time *J-Unit Testing? or Debugging*
 
@@ -160,9 +158,8 @@ public class Player : Character
         {
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
 
-            s.Initialize(currentTarget, newSpell.MyDamage);     //When new spell is created use current target, and damage designated by spellbook
+            s.Initialize(currentTarget, newSpell.MyDamage, transform);     //When new spell is created use current target, damage designated by spellbook, and source which is player
         }
-
 
         //Debug.Log("Attack done");              //UNIT TESTING: Making sure casting works (look at StopAttack debug in character)
         StopAttack();       //Ends attack
@@ -175,7 +172,7 @@ public class Player : Character
     {
         BlockView();
 
-        if (MyTarget != null && !isAttacking && !IsMoving && InLineOfSight())       //Checks if able to attack
+        if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !IsAttacking && !IsMoving && InLineOfSight())       //Checks if able to attack
         {
             attackRoutine = StartCoroutine(Attack(spellIndex));        //Something you do while rest of script runs
         }
@@ -222,14 +219,25 @@ public class Player : Character
     }
 
 
-    /// <summary>
-    /// Overrides stopAttack() function in character. Since player uses spellbook to cast/stop spells
-    /// </summary>
-    public override void StopAttack() 
-    {
-        spellBook.StopCasting();
 
-        base.StopAttack();                  //Makes it so stopAttack function in player script is still called
+
+    /// <summary>
+    /// Stops Player's attack
+    /// </summary>
+    public void StopAttack()
+    {
+
+        spellBook.StopCasting();    //Stops spellbook cast
+
+        IsAttacking = false;
+        MyAnimator.SetBool("attack", IsAttacking);  //Stops attack animation
+
+        if (attackRoutine != null)
+        {
+            StopCoroutine(attackRoutine);
+            //Debug.Log("attack stopped");
+        }
     }
+
 
 }

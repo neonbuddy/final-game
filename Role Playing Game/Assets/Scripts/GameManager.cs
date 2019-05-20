@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private Player player;  //Reference to player
+    private Player player;      //Reference to player
 
     private NPC currentTarget;
 
@@ -20,12 +20,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ClickTarget();                      //
+        ClickTarget();          
     }
 
     private void ClickTarget()
     {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())        //If left mouse button clicked on clickable it will target && fixes deselection of target when mouse is hovering over UI action bars
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())        //If left mouse button clicked on Object with clickable layer it will target
+                                                                                                  // && fixes deselection of target when mouse is hovering over UI action bars
         {
 
             //Translates mouse position from screen point to world point; uses object layer (mask:512) for targetable items
